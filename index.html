@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        .heading {
+            text-align: center;
+            color: white;
+        }
+
+        .box {
+            background-color: grey;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0% 41%;
+            border: 1px solid black;
+            border-radius: 20px;
+
+        }
+        .inner-box{
+            margin: 15px 0px;
+        }
+
+        .btn {
+            height: 50px;
+            width: 50px;
+            margin: 2px 0px;
+            border: 1px solid black;
+            border-radius: 10px;
+            box-shadow: 0 0 2px black;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: rgba(255, 255, 255, 0.685);
+        }
+
+        .btn-del,
+        .btn-0 {
+            width: 104px;
+        }
+        .input{
+            margin-top: 15px;
+            width: 80%;
+            border: 1px solid black;
+            border-radius: 5px;
+            height: 40px;
+            text-align: right;
+            padding-right: 10px;
+            font-size: 30px;
+        }
+        .btn-color, .btn-bgcolor{
+            background-color: orange;
+        }
+        @media only screen and (max-width:1350px){
+            .box{
+                width: 80%;
+                height: 450px;
+                margin: 10% 12%;
+            }
+           
+            .inner-box{
+                margin-top: 10px;
+                margin-bottom: 20px;
+            }
+            .btn{
+                margin: 4px 2px;
+                width: 59px;
+                height: 59px;
+                font-size: 30px;
+            }
+            .btn-del,
+            .btn-0 {
+                width: 127px;
+            }
+            .input{
+                margin-top: 20px;
+                border-radius: 10px;
+                font-size: 35px;
+                height: 50px ;
+                padding: 7px 10px 7px 0px;
+            }
+            .heading{
+                margin-top: 100px;
+                font-size: 50px;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="heading">Calculator</h1>
+    <div class="box">
+        <input type="text" name="input" placeholder="0" class="input">
+        <div class="inner-box">
+
+            <div class="row">
+                <button class="btn btn-del">Clear</button>
+                <button class="btn">%</button>
+                <button class="btn btn-bgcolor">/</button>
+            </div>
+            <div class="row">
+                <button class="btn ">7</button>
+                <button class="btn">8</button>
+                <button class="btn">9</button>
+                <button class="btn btn-bgcolor btn-x">*</button>
+            </div>
+            <div class="row">
+                <button class="btn">4</button>
+                <button class="btn">5</button>
+                <button class="btn">6</button>
+                <button class="btn btn-bgcolor btn-">-</button>
+            </div>
+            <div class="row">
+                <button class="btn">1</button>
+                <button class="btn">2</button>
+                <button class="btn">3</button>
+                <button class="btn btn-bgcolor">+</button>
+            </div>
+            <div class="row ">
+                <button class="btn btn-color btn-0">0</button>
+                <button class="btn btn-color btn.">.</button>
+                <button class="btn btn-color">=</button>
+
+
+
+            </div>
+        </div>
+    </div>
+    <script>
+        let string = "";
+        let buttons = document.querySelectorAll('.btn');
+        Array.from(buttons).forEach((button)=>{
+            button.addEventListener('click', (e)=>{
+                if(e.target.innerHTML == '='){
+                    string = eval(string);
+                    document.querySelector('input').value=string;
+                }
+               else if(e.target.innerHTML == 'Clear'){
+                    string = "";
+                    document.querySelector('input').value=string;
+                }
+    
+                else{
+                console.log(e.target);
+                string = string + e.target.innerHTML;
+                document.querySelector('input').value=string;
+                }
+            })
+        })
+
+    </script>
+</body>
+
+</html>
